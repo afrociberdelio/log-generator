@@ -1,0 +1,22 @@
+dependency: {}
+replicaCount: 1
+image:
+  repository: python
+  tag: "3.9"
+  pullPolicy: IfNotPresent
+command:
+  - "sh"
+  - "-c"
+  - "pip install minio"
+  - "python -u /app/log_generator.py"
+script: |
+  import random
+  import time
+  import logging
+
+  logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
+  messages = ["Erro ao conectar", "Usuário autenticado", "Requisição recebida"]
+
+  while True:
+      logging.info(random.choice(messages))
+      time.sleep(2)

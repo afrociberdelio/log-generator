@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: log-generator
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/seu-usuario/seu-repositorio.git"  # 🔹 Substitua pelo seu repositório
+    targetRevision: main  # 🔹 Branch onde está o Helm Chart
+    path: log-generator  # 🔹 Caminho dentro do repositório onde está o Chart
+    helm:
+      valueFiles:
+        - values.yaml  # Usa o values.yaml padrão do chart
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: logging  # 🔹 Substitua pelo namespace onde deseja deployar
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true  # Cria o namespace caso não exista

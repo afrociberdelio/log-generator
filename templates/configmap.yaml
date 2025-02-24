@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-script
+data:
+  log_generator.py: |
+    {{ .Values.script | nindent 4 }}
