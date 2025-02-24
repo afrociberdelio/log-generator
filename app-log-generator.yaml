@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "https://github.com/seu-usuario/seu-repositorio.git"  # 🔹 Substitua pelo seu repositório
+    repoURL: "https://github.com/afrociberdelio/log-generator.git"  # 🔹 Substitua pelo seu repositório
     targetRevision: main  # 🔹 Branch onde está o Helm Chart
     path: log-generator  # 🔹 Caminho dentro do repositório onde está o Chart
     helm:
